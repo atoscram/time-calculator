@@ -1,5 +1,7 @@
 # time-calculator
 
+freeCodeCamp exercise time-calculator
+
 Write a function named add_time that takes in two required parameters and one optional parameter:
 
 - a start time in the 12-hour clock format (ending in AM or PM)
