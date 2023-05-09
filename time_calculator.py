@@ -1,27 +1,8 @@
-def hours_to_12_format(hours):
-    return hours / 12
-def hours_to_days(hours):
-    return hours / 24
-
-def days_to_hours(days):
-    return days * 24
-def minutes_to_hours(minutes):
-    return minutes / 60
-
-def hours_to_minutes(hours):
-    return hours * 60
-
-def seconds_to_minutes(seconds):
-    return seconds / 60
-
-def minutes_to_seconds(minutes):
-    return minutes * 60
 
 def add_time(start_time, duration, start_day=None):
     # example
     # add_time("3:00 PM", "3:10")
     # Returns: 6:10 PM
-    added_time = str()
     end_day = ""
     days_of_the_week = [
         "Sunday",
@@ -45,13 +26,13 @@ def add_time(start_time, duration, start_day=None):
     added_hours = int(time_hours) + int(duration_hours) + int(added_minutes // 60)
 
     # Floating days value with decimal hours
-    passed_days = hours_to_days(added_hours)
-
+    passed_days = added_hours / 24
     # Floating hour value with decimal minutes
-    passed_hours = minutes_to_hours(added_minutes)
-
+    passed_hours = added_minutes / 60
     # Current hour in 24 hr format
     current_hour = added_hours % 24
+    # Current minutes
+    current_minute = added_minutes % 60
 
     # Convert to 12-hour format
     if current_hour == 0:
@@ -66,9 +47,6 @@ def add_time(start_time, duration, start_day=None):
     else:
         current_hour_12_format = current_hour
         meridien = "AM"
-
-    # Current minutes
-    current_minute = added_minutes % 60
 
     # Calculate the end_day if start day is provided
     if start_day:
